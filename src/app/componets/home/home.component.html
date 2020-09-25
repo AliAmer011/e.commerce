@@ -1,0 +1,57 @@
+<!-- {{LoginForm.value|json}} -->
+<!-- <br>
+  <h2>Account</h2> -->
+<form [formGroup]="LoginForm" (ngSubmit)="Login()" class="mx-auto" style="width: 50%;">
+  <div class="form-horizontal">
+    <div class="mx-auto d-flex justify-content-center ">
+      <h3 class=" " style="margin-left: 10px;">login To Your account </h3>
+
+      <i class="fab fa-amazon  gold" style="font-size:37px;margin-left: 10px; "></i>
+    </div>
+    <hr />
+    <!-- <hr style="background-color: #f1c75f;"/> -->
+
+    <div class="form-group row ">
+      <div class="col-lg-3">
+        <label for="" style="font-size: 1.1rem;padding-top: 8px;">UserName</label>
+      </div>
+      <div class="col-lg-9">
+        <input [(ngModel)]="account.UserName" type="text" class="form-control " formControlName="UserName">
+      
+
+      <div [hidden]="LoginForm.controls['UserName'].valid || LoginForm.controls['UserName'].untouched"
+        class="alert alert-warning">
+        must be more Than 3 Chars
+      </div>
+    </div>
+    </div>
+
+    <div class="form-group row ">
+      <div class="col-lg-3">
+        <label for="" style="font-size: 1.1rem;padding-top: 8px;">Password</label>
+
+      </div>
+      <div class="col-lg-9">
+
+        <input [(ngModel)]="account.Password" type="password" class="form-control" formControlName="Password">
+
+        <div [hidden]="LoginForm.controls['Password'].valid || LoginForm.controls['Password'].untouched"
+          class="alert alert-warning">
+          must be more Than 6 Chars
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-9">
+        <button class="btn-out-gold mx-auto" [disabled]="!LoginForm.valid" type="submit"
+          style="width: 100%;">Login</button>
+      </div>
+    </div>
+  </div>
+<hr>
+
+  <!-- <hr style="background-color: #f1c75f;"/> -->
+
+</form>

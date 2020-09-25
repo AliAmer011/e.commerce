@@ -1,0 +1,62 @@
+
+
+<nav class="navbar fixed-top  navbar-expand-md  navbar-dark py-lg-0" style=" background-color: #232f3e; margin-bottom: 100px;"> 
+         
+    <!--logo-->
+    <button class ="btn  btnhover " style="margin-right: 10px;" >
+        <i class="fab fa-amazon gold" style="font-size:40px;"></i>
+    </button>  
+    <a class=" navbar-brand" >
+        <h3  class=" d-inline">e.comm</h3>
+    </a>
+
+
+
+    <button class="navbar-toggler ml-auto" type="button"  data-toggle="collapse"
+       data-target="#CollabseNavbar" >
+    <span class="navbar-toggler-icon"></span>
+    </button> 
+
+     <div class="  collapse navbar-collapse  d-lg-flex justify-content-end" id="CollabseNavbar" >
+    <ul class="navbar-nav  w-75 " style="display: flex; justify-content: space-around;">
+
+      <li class="nav-item">
+        <a class="nav-link"  routerLink="/Home" data-toggle="Home" title="Home">
+          <i class="fas fa-house-user"></i>
+          home
+        </a>
+    </li>
+
+  <script>$(document).ready(function(){$('[data-toggle="Home"]').tooltip();});  </script>
+      <li class="nav-item"  >
+        <a class="nav-link" routerLink="/Products"  data-toggle="Products" title="Products">
+            <i class="fas fa-tags "></i> Products</a>
+      </li>
+
+
+<li *ngIf="!IsLogin" class="nav-item" >
+<a  [routerLink]="['/Login']" class="nav-link" href="#" data-toggle="Login" title="Login">
+<i class="fas fa-sign-in-alt gold " ></i>  Login        
+</a>
+</li>
+
+<li *ngIf="IsLogin" class="nav-item"  >
+  <a  (click)="LogOut()" class="nav-link" href="#" data-toggle="Login" title="Login">
+  <i class="fas fa-sign-out-alt gold " ></i>  LogOut     
+  </a>
+  </li>
+
+
+  
+<li >
+  <a [routerLink]="['/Cart']" class="nav-link " href="#" data-toggle="Login" title="Login" >
+    <button  type="button" class="btn-gold  ">
+        <i class="fas fa-cart-plus" style="font-size: 20px;margin-right: 3px;"></i>
+        <span class="badge badge-light" [(ngModel)]="NoCartPdrs">{{NoCartPdrs}}  </span>
+        </button>
+        </a>
+</li>
+
+</ul>
+</div>
+</nav>

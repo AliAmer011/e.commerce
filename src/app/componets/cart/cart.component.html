@@ -1,0 +1,128 @@
+
+<div class="row d-flex justify-content-around" style="padding: 20px;">
+<div class="col-lg-8 col-10  ">
+<div class=" " *ngFor="let product of PrdCart">
+    
+<div class="mx-auto" style="border: solid 1px lightgray ;border-radius: 10px; padding: 15px;margin-top: 20px;">
+
+   
+    <a style="text-decoration:none;color:black;cursor:pointer;font-size: 1.2rem;font-weight: 700;">{{product.Name}}</a>
+    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+    <br />
+    <div class="row">
+       
+        <div class="col-md-6 ">
+            
+            <div class=" ">
+                <ul class="list-unstyled list-inline rating mb-0 " style="width: fit-content;height: fit-content;">
+                    <li *ngFor="let i of product.Rate" class="list-inline-item mr-0"><i class="fas fa-star amber-text Star-gold "> </i></li>
+                    <li *ngIf="!product.TopRated" class="list-inline-item"><i class="fas fa-star-half-alt amber-text Star-gold" ></i></li>
+                    <li class="list-inline-item"><span class="text-muted">{{product.Stars}} (5)</span></li>
+
+                    </ul>
+                
+            
+            <button type="button" class="btn btn-danger btn-sm ">{{product.Sale}} % OFF</button>
+            </div>
+            <div class="d-flex  ">
+            <img  [src]='product.Image' class="img-fluid mx-auto w-75"  />
+        </div>
+
+        </div>
+        <div class="col-md-6">
+            <br />
+            <h5 class="price" style="font-size: 1.29rem;color:#006fcc;font-weight:700">
+                <span>{{product.Price}} .00 Dollar </span>
+            </h5>
+           
+
+            <span class="beforeSale" style="text-decoration: line-through;color: #aeaeae;font-size: 1rem;font-weight: 400;line-height: 2.1428571429rem;">
+                816.00
+                <small class="currency-text">
+                    Dollar
+                </small>
+            </span>
+            <span class="save" style="font-size:1rem;font-weight:bold">
+                - You save 117.00 Dollar
+            </span>
+
+
+            <div class="dropdown-divider"></div>
+            <div class="des" style="overflow:hidden">
+                <h3 class="title" style="font-weight: 700;font-size: 1rem;">PRODUCT INFORMATION</h3>
+                
+                <span class="save" style="font-size:1rem;font-weight:bold">
+                    Demand Qty :
+                </span>
+                <input  class="d-inline form-control w-25" #pCount value={{product.PQ}} type="number">
+                <br>
+                <span class="save" style="font-size:1rem;font-weight:bold">
+                    Required Money :
+                </span>
+                <span class="price" style="font-size: 1.1rem;color:#006fcc;font-weight:500">
+                    <span>{{product.TotalMoeny}}. 00 Dollar</span>
+                </span>
+            </div>
+            <br>
+            <div class="d-flex justify-content-around" >
+            <a (click)="AddToCart(product.ID ,pCount.value,product.Price )" class="btn-gold "  role="button">UpDate CARD</a>
+            <a (click)="RemoveFrmCart(product.ID )" class="btn btn-danger "  role="button">Remove</a>
+        </div>
+        </div>
+      
+    </div>
+  
+</div>
+
+
+ 
+</div>
+
+</div>
+
+<div class="col-lg-4 col-10 " style="height: 310px;  border: solid 1px lightgray ;border-radius: 10px;margin-top: 20px;">
+    <div class="mx-auto w-75 ">
+            <i class="fab fa-amazon mx-auto gold" style="font-size:35px;"></i>
+            <p style="font-size:35px;" class="d-inline"> Amazon</p>
+           
+            
+    </div>
+      <hr>
+
+    <!-- <div class="d-flex mx-auto " style="justify-content: space-evenly;">
+    <span  class="" style="font-size:1.3rem;font-weight:bold">
+      ToTal Money :
+    </span>
+    <span class="price" style="font-size: 1.3rem;color:#006fcc;font-weight:600">
+          {{TotalPrice }}
+    </span> 
+  </div> -->
+
+  <div class="d-flex mx-auto " style="justify-content: space-evenly;">
+    <span  class="" style="font-size:1.3rem;font-weight:bold">
+        ToTal Money :</span>
+     
+    <span class="text-primary" style="font-size:1.3rem;color:#006fcc;font-weight: 600;"> {{TotalPrice}} .00 Dollar</span>
+ 
+  </div>
+
+  <hr>
+<div class="d-flex mx-auto " style="color: #4c6ef5;justify-content: space-evenly;font-size: 40px;">
+    <i class="fab fa-cc-visa " style="color:#3b5a9a"></i>
+    <!-- <i class="fab fa-cc-apple-pay text-primary"></i> -->
+    <i class="fab fa-cc-paypal" style="color: #c5181d;" ></i>
+
+    <i class="fab fa-cc-mastercard  " style="color:#1aa9e1" ></i>
+</div>
+
+  <hr>
+  <div class="d-flex mx-auto " style="justify-content: space-evenly;">
+
+      <a class=" btn-gold" role="button" (click)="goBack()">Check Out</a>
+
+
+    <a class="btn-gold" role="button" (click)="goBack()">Continue Shopping</a>
+</div>
+
+</div>
+</div>

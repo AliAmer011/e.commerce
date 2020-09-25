@@ -1,0 +1,29 @@
+
+  <!-- {{AddPForm.value|json}} -->
+  <br>
+  <h2>Create</h2>
+<form [formGroup]="AddPForm" (ngSubmit)="NewOne()"  class = "mx-auto" style="width: 50%;">
+    <div class="form-horizontal ">
+
+        <i class="fab fa-amazon mx-auto gold" style="font-size:40px;"></i>
+        <h3 class="d-inline">  Category</h3>
+        <hr />
+
+  <div class="d-flex justify-content-around">
+    <div class="form-group w-75  ">
+      <input [(ngModel)]="cat.Name"  type="text" class="form-control"  formControlName="Name">
+      
+      <div [hidden]="AddPForm.controls['Name'].valid || AddPForm.controls['Name'].untouched"
+      class="alert alert-warning">
+   Name is required and must 3+ Chars
+ </div>
+ </div>
+  
+     <div class=""> 
+    <button class="btn-gold" [disabled]="!AddPForm.valid"  type="submit">add </button>
+  </div>
+
+  </div>
+
+  </div>
+</form>

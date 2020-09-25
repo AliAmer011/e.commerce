@@ -1,0 +1,108 @@
+<hr />
+<div class="row ">
+    <div class=" col-md-5 col-sm-4 ">
+        <input class="form-control d-inline" style="width: 15%;" type="number" [(ngModel)]="NoOfPS"> Items
+        <a [routerLink]="['/AddProduct']" *ngIf="IsAdmin" class="btn-sm btn-gold">New One</a>
+        <a [routerLink]="['/AddCat']" *ngIf="IsAdmin" class="btn-sm btn-gold" style="margin-left: 20px;">New CAT</a>
+    </div>
+
+    <div class="col-md-7 col-sm-8  d-flex justify-content-md-end ">
+
+        <form class="form-inline " style="margin-right:20px ;">
+            <div class="d-flex ">
+                <select (change)="onChange($event.target.value)" class="form-control "
+                    style="border-radius:7px 0px 0px 7px">
+                    <option class="" [value]=0>All</option>
+                    <option class="" *ngFor="let category of Categories" [value]="category.ID">{{category.Name}}
+                    </option>
+                </select>
+
+                <input class="form-control search" #ser type="search" placeholder="Search For Product : ">
+                <button (click)="onClick(ser.value)" class="btn btn-info search" type="button"
+                    style="border-radius:0px 7px 7px 0px">
+                    <i class="fas fa-search" style="font-size: large"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<hr />
+
+<div class="row  mx-auto " style="">
+    <div class="  col-lg-3 col-md-6 col-9 mx-auto mx-md-0"
+        *ngFor="let p of getProductsByCatName(SelectedCatID,SearchKey)" style="padding:0px">
+        <div class="card booking-card "
+            style="border: solid 1px lightgray; padding: 0px; height: 310px;border-radius:10px">
+
+
+
+            <div class="d-flex  border-danger" style="height:65%">
+                <img [routerLink]="['/Product',p.ID]" [src]="p.Image" class=" card-img-top    img-fluid "
+                    alt="Student Image"
+                    style="width: 85%;height:100%;padding-top: 15px; margin-left:5%; cursor: pointer;text-decoration: none;">
+
+
+                <div *ngIf="!IsAdmin" class=" border-danger"
+                    style="width:15%;height:100%;margin-left:-15%;padding-top: 10px">
+
+                    <a (click)="UpdateCart(p.ID,1,p.Price)" class=" btn-gold  "
+                        style="  border-radius: 50% ;width: 50px;height: 50px">
+                        <i class="fas fa-cart-plus mx-auto my-auto " style="color:white; font-size: 1.5rem; padding-top: 25%;"></i>
+
+                    </a>
+                </div>
+                
+                <div *ngIf="IsAdmin" class=" border-danger d-flex flex-column justify-content-between "
+                    style="width:15%;height:95%;margin-left:-18%;padding-top: 5px">
+                  
+                    <a (click)="DeletePrd(p.ID)" class=" btn btn-danger "
+                        style="border-radius: 50% ;width: 45px;height: 45px">
+                        <i class="fas fa-minus " style="color: white; font-size: 1.3rem;padding-top: 30%;"></i>
+
+                    </a>
+                    
+                    
+                    <a [routerLink]="['/UpdateProduct',p.ID]" class=" btn-gold  "
+                        style="border-radius: 50% ;width: 45px;height: 45px">
+                        <i class="fab fa-buromobelexperte " style="color: white; font-size: 1.5rem;padding-top: 22%;"></i>
+                    </a>
+                </div>
+
+            </div>
+            <div class="card-body  border-danger  ">
+                <div class=" text-center " style="overflow:hidden;height:80%">
+                    <a [routerLink]="['/Product',p.ID]"
+                        style="cursor:pointer;text-decoration:none;color:black">{{p.Name}}</a>
+                </div>
+
+                <div class="  card-link d-flex justify-content-lg-around justify-content-center ">
+                    <span style="font-size: 1.2rem;color: #006fcc;overflow:hidden;font-weight: bold;">
+                        {{p.Price}} <span class="text-info">$</span>
+                    </span>
+                    <span >
+                        <ul class="list-unstyled list-inline rating mb-0 float-right">
+                            <li *ngFor="let i of p.Rate" class="list-inline-item mr-0"><i
+                                    class="fas fa-star amber-text Star-gold " style="font-size: 1rem;"> </i></li>
+                            <li *ngIf="!p.TopRated" class="list-inline-item"><i
+                                    class="fas fa-star-half-alt amber-text Star-gold" style="font-size: 1rem;"></i>
+                            </li>
+                            <!-- <li  class="list-inline-item">{{p.Stars}}(5)</li> -->
+
+                        </ul>
+                    </span>
+                </div>
+
+                <!-- <div *ngIf="!IsAdmin" class="" style="display: flex;">
+
+                        <a (click)="UpdateCart(p.ID,1,p.Price)" class=" btn-gold btn-sm mx-auto " style="width: 150px;" >Add To Cart</a>
+                    </div>
+
+                <div *ngIf="IsAdmin" class="" style="display: flex;">
+
+                <a [routerLink]="['/UpdateProduct',p.ID]" class=" btn-gold btn-sm mx-auto " style="width: 35%;" >Update</a>
+                <a (click)="DeletePrd(p.ID)" class=" btn btn-danger btn-sm mx-auto" style="width: 35%;">Delete</a>
+                   </div> -->
+            </div>
+        </div>
+    </div>
+</div>

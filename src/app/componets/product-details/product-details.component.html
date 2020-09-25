@@ -1,0 +1,83 @@
+<!-- <div class="modal fade" id="myModal" role="dialog" style="width:80%;max-width:900px;left:10%;top:3%;overflow-y: hidden;border-radius:0px">
+    <div class="modal-dialog" style="max-width:none">
+
+        <div class="modal-content" style="border-radius:0px">
+
+            <div class="modal-body"> -->
+                
+                <div class="mx-auto  " style="width: 90%; border: solid 1px lightgray ;border-radius: 10px; padding: 15px;margin-top: 20px;">
+                <a href="" style="text-decoration:none;color:black;cursor:pointer;font-size: 1.5;font-weight: 700;">{{product.Name}}</a>
+                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                <br />
+                <div class="row">
+                    <div class="col-lg-4  ">
+                        
+                        <div class="  ">
+                            <ul class="list-unstyled list-inline rating mb-0 " style="width: fit-content;height: fit-content;">
+                                <li *ngFor="let i of product.Rate" class="list-inline-item mr-0"><i class="fas fa-star amber-text Star-gold "> </i></li>
+                                <li *ngIf="!product.TopRated" class="list-inline-item"><i class="fas fa-star-half-alt amber-text Star-gold" ></i></li>
+                                <li class="list-inline-item"><span class="text-muted">{{product.Stars}} (5)</span></li>
+                                </ul>                    
+                        
+
+                           <button type="button" class="btn btn-danger btn-sm sale">{{product.Sale}} % OFF</button>
+                       </div>
+                    <div class="  ">
+                        <img  [src]='product.Image' class="mx-auto img-fluid " style="width: 90%;padding: 25px;" />
+                   </div>
+
+                    </div>
+                    <div class="col-lg-5  ">
+                        <br />
+                        <h5 class="price" style="font-size: 1.29rem;color:#006fcc;font-weight:700">
+                            <span>{{product.Price}}  .00</span> <span class="text-info">  Dollar</span>
+                        </h5>
+
+                        <span class="beforeSale" style="text-decoration: line-through;color: #aeaeae;font-size: 1rem;font-weight: 400;line-height: 2.1428571429rem;">
+                            816.00
+                            <small class="currency-text">
+                                EGP
+                            </small>
+                        </span>
+                        <span class="save" style="font-size:1rem;font-weight:bold">
+                            - You save 117.00 EGP
+                        </span>
+
+
+                        <div class="dropdown-divider"></div>
+                        <div class="des" style="overflow:hidden">
+                            <h3 class="title" style="font-weight: 700;font-size: 1rem;">PRODUCT INFORMATION</h3>
+                            <p>{{product.Description}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3  ">
+                        <br />
+                        <span class="text-danger" style="font-size:large;color:#eb361b;font-weight:bold">only {{product.Quantity}}  item in stock!</span>
+                        
+                        <br>
+                        
+                        <div class="d-flex" style="justify-content: space-evenly; margin-top: 5px;">
+                         <a (click)="UpdateCart(product.ID ,pCount.value,product.Price )" class="btn-gold "  role="button">ADD TO CARD</a>
+                         <input class="d-inline form-control " style="width: 30%;" #pCount value=1 type="number">
+                        </div>
+                             <hr>
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <strong>Condition : </strong>
+                        <span class="condition-status">New</span>
+                        <br />
+                        <strong>Sold by :</strong>
+                        <span class="condition-status">SouqEgypt</span>
+                      <hr>
+                      <a
+                      class=" mx-auto btn-gold" role="button" (click)="goBack()">Continue Shopping</a>
+                    </div>
+                </div>
+                <!-- <div class="row  ">
+                    <a style="margin-top: 10px;background-color: #f1c75f;"
+        class=" mx-auto btn" role="button" (click)="goBack()">Continue Shopping</a>
+                </div> -->
+            </div>
+ 
+
+
